@@ -1,3 +1,5 @@
+
+import 'package:bmi/widgets/custom_appbar.dart';
 import 'package:bmi/widgets/custom_colors.dart';
 import 'package:bmi/widgets/gender_info.dart';
 import 'package:bmi/widgets/weight_age.dart';
@@ -15,26 +17,15 @@ class _BMIcalculatorState extends State<BMIcalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.black,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: CustomColor.black,
-        title: Text(
-          'Body Mass Index',
-          style: TextStyle(
-            fontSize: 25,
-            color: CustomColor.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(title: 'BMI Calculator'),
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
-          spacing: 15,
+          spacing: 10,
           children: <Widget>[
             Expanded(
               child: Row(
-                spacing: 15,
+                spacing: 10,
                 children: <Widget>[
                   //================ first row ====================
                   Expanded(
@@ -69,8 +60,8 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                       min: 80,
                       max: 210,
                       value: 80,
-                      activeColor: Colors.red,
-                      inactiveColor: Colors.white,
+                      activeColor: CustomColor.red,
+                      inactiveColor: CustomColor.white,
                       onChanged: (value) => value,
                     ),
                   ],
@@ -80,7 +71,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
             //============= third row ===================
             Expanded(
               child: Row(
-                spacing: 15,
+                spacing: 10,
                 children: [
                   Expanded(
                     child: WeightAge(
@@ -108,21 +99,22 @@ class _BMIcalculatorState extends State<BMIcalculator> {
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.amber,
-
                 borderRadius: BorderRadius.circular(25),
               ),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: CustomColor.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultScreen()));
+                  Navigator.pushNamed(context, 'result');
+                },
                 child: Text(
                   'Calculate',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: TextStyle(color: CustomColor.white, fontSize: 22),
                 ),
               ),
             ),

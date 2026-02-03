@@ -1,4 +1,5 @@
 import 'package:bmi/screens/calculate_screen.dart';
+import 'package:bmi/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BMIcalculator(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => BMIcalculator(),
+        'result': (context) => ResultScreen(),
+      },
+
     );
   }
 }
